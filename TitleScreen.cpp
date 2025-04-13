@@ -39,8 +39,3 @@ void TitleScreen(){
         }
     }
 }
-
-int main() {
-    TitleScreen();
-    InfoMenu();
-}

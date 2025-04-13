@@ -4,6 +4,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include "Room.hpp"
 
 
 void InfoMenu() {
@@ -20,7 +21,7 @@ void InfoMenu() {
             window.close();
           } else if (event.type == sf::Event::MouseButtonPressed) {
             window.setMouseCursorVisible(true);
-            window.close();
+            displayRoom(window);
           }
         }
         if (count < 1) {
