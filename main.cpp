@@ -5,7 +5,7 @@
 int main() {
   unsigned int win_width  = 800;
   unsigned int win_length = 600;
-  sf::RenderWindow window(sf::VideoMode({win_width, win_length}), "SFML works!");
+  sf::RenderWindow window(sf::VideoMode(win_width, win_length), "SFML works!");
 
   sf::Texture texture;
   texture.loadFromFile("assets/button-example.png");
