@@ -4,14 +4,13 @@
 #include "Room.hpp"
 
 int main() {
+  unsigned int win_width  = 1200;
+  unsigned int win_height = 800;
+  sf::RenderWindow window(sf::VideoMode(win_width, win_height), "SFML works!");
 
-  displayExampleRoom();
+  displayRoom(window);
 
-  /*unsigned int win_width  = 800;
-  unsigned int win_length = 600;
-  sf::RenderWindow window(sf::VideoMode({win_width, win_length}), "SFML works!");
-
-  sf::Texture texture;
+  /*sf::Texture texture;
   texture.loadFromFile("assets/button-example.png");
   sf::Sprite sprite(texture);
   sf::Rect<float> sprite_size = sprite.getGlobalBounds();

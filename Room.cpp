@@ -2,6 +2,9 @@
 
 #include "Room.hpp"
 
-void displayExampleRoom() {
-  displayExampleWall();
+void displayRoom(sf::RenderWindow &window)
+{
+  fourDigitNumberWall(window);
+
+  //displayExampleWall(window);
 }
