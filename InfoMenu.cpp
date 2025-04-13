@@ -11,6 +11,7 @@ void InfoMenu() {
     unsigned int win_width  = 800;
     unsigned int win_length = 600;
     sf::RenderWindow window(sf::VideoMode({win_width, win_length}), "SFML works!", sf::Style::Fullscreen);
+    window.setMouseCursorVisible(false);
     int count = 0;
     while (window.isOpen()) {
         sf::Event event;
@@ -18,6 +19,7 @@ void InfoMenu() {
           if (event.type == sf::Event::Closed) {
             window.close();
           } else if (event.type == sf::Event::MouseButtonPressed) {
+            window.setMouseCursorVisible(true);
             window.close();
           }
         }
