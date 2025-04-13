@@ -5,9 +5,10 @@
 #include "Button.hpp"
 #include "Picture.hpp"
 
-void fourDigitNumberWall(sf::RenderWindow& window);
 
 void circuitBreakerWall(sf::RenderWindow &window);
+
+void fourDigitNumberWall(sf::RenderWindow& window);
 
 void displayExampleWall(sf::RenderWindow& window);
 

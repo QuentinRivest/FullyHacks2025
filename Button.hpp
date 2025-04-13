@@ -18,16 +18,19 @@ public:
   bool isPressed() const;
   bool isHovered() const;
 
+  void scaleSize(float x, float y);
   void setSize(float target_x, float target_y);
   void setTexture(const std::string &tex_filepath);
+  const std::string &getTextureFilepath() const;
 
   void update(const sf::RenderWindow& window);
   void render(sf::RenderTarget& target);
 
 private:
   ButtonState _button_state;
-  sf::Sprite  _sprite;
+  std::string _tex_filepath;
   sf::Texture _texture;
+  sf::Sprite  _sprite;
 
   // private helper var.s
   const sf::Color _idle_overlay_color  = sf::Color(255, 255, 255);

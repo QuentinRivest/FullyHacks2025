@@ -4,7 +4,9 @@
 
 void displayRoom(sf::RenderWindow &window)
 {
-  fourDigitNumberWall(window);
+  circuitBreakerWall(window);
+
+  //fourDigitNumberWall(window);
 
   //displayExampleWall(window);
 }

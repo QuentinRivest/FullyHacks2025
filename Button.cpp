@@ -3,7 +3,7 @@
 #include "Button.hpp"
 
 Button::Button(float x, float y, const std::string& tex_filepath)
-    : _button_state{ButtonState::IDLE} {
+    : _button_state{ButtonState::IDLE}, _tex_filepath(tex_filepath) {
   if (_texture.loadFromFile(tex_filepath)) {
     _sprite.setTexture(_texture);
   } else {
@@ -24,6 +24,10 @@ bool Button::isHovered() const{
   return this->_button_state == ButtonState::HOVERED;
 }
 
+void Button::scaleSize(float x, float y) {
+  _sprite.setScale(x, y);
+}
+
 void Button::setSize(float target_x, float target_y) {
   sf::Vector2u texSize = _texture.getSize();
   if (texSize.x == 0 || texSize.y == 0) return;
@@ -40,6 +44,10 @@ void Button::setTexture(const std::string &tex_filepath) {
   } else {
     std::cout << "Textures didn't load. :(\n";
   }
+}
+
+const std::string& Button::getTextureFilepath() const {
+  return _tex_filepath;
 }
 
 void Button::update(const sf::RenderWindow &window) {
