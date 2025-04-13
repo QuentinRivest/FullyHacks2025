@@ -2,22 +2,18 @@
 
 #include "Button.hpp"
 
-Button::Button(float x, float y, const std::string& tex_filepath) {
-  if (this->_texture.loadFromFile(tex_filepath)) {
-    this->_sprite.setTexture(this->_texture);
+Button::Button(float x, float y, const std::string& tex_filepath)
+    : _button_state{ButtonState::IDLE} {
+  if (_texture.loadFromFile(tex_filepath)) {
+    _sprite.setTexture(_texture);
   } else {
     std::cout << "Textures didn't load. :(\n";
   }
 
-  this->_button_state = ButtonState::IDLE;
 
   sf::Rect<float> sprite_size = _sprite.getGlobalBounds();
-  this->_sprite.setOrigin(sprite_size.width / 2.0f, sprite_size.height / 2.0f);
-  this->_sprite.setPosition(x, y);
-}
-
-Button::Button(sf::Vector2f position, const std::string& tex_filepath) {
-  Button(position.x, position.y, tex_filepath);
+  _sprite.setOrigin(sprite_size.width / 2.0f, sprite_size.height / 2.0f);
+  _sprite.setPosition(x, y);
 }
 
 bool Button::isPressed() const {
@@ -28,11 +24,27 @@ bool Button::isHovered() const{
   return this->_button_state == ButtonState::HOVERED;
 }
 
+void Button::setSize(float target_x, float target_y) {
+  sf::Vector2u texSize = _texture.getSize();
+  if (texSize.x == 0 || texSize.y == 0) return;
+
+  float scale_x = target_x / static_cast<float>(texSize.x);
+  float scale_y = target_y / static_cast<float>(texSize.y);
+  _sprite.setScale(scale_x, scale_y);
+}
+
+
+void Button::setTexture(const std::string &tex_filepath) {
+  if (_texture.loadFromFile(tex_filepath)) {
+    _sprite.setTexture(_texture);
+  } else {
+    std::cout << "Textures didn't load. :(\n";
+  }
+}
+
 void Button::update(const sf::RenderWindow &window) {
   sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
   auto hit_box = this->_sprite.getGlobalBounds();
-
-  this->_sprite.setScale(0.4f, 0.4f);
 
   if (hit_box.contains(mouse_pos.x, mouse_pos.y)) {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {

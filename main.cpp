@@ -11,7 +11,9 @@ int main() {
   unsigned int win_length = 600;
   sf::RenderWindow window(sf::VideoMode(win_width, win_length), "SFML works!");
 
-  sf::Texture texture;
+  displayRoom(window);
+
+  /*sf::Texture texture;
   texture.loadFromFile("assets/button-example.png");
   sf::Sprite sprite(texture);
   sf::Rect<float> sprite_size = sprite.getGlobalBounds();
