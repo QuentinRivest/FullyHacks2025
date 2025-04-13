@@ -29,7 +29,7 @@ void InfoMenu(sf::RenderWindow& window) {
     
 }
 
-int main() {
+/*int main() {
     unsigned int win_width  = 800;
     unsigned int win_length = 600;
     int count = 0;
@@ -47,4 +47,4 @@ int main() {
         count += 1;
         }    
     }
-}
+}*/

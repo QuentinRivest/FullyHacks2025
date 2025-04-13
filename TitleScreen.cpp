@@ -1,26 +1,13 @@
 #include "InfoMenu.cpp"
 #include <cmath>
+#include "Button.cpp"
 
 void TitleScreen(sf::RenderWindow& window){
     sf::Font space_font;
     space_font.loadFromFile("assets/space-font-italic.ttf");
-
-    sf::Text title("LAST BREATH", space_font, 50);
-    auto center = title.getGlobalBounds().width / 2.f;
-    auto localBounds = center + title.getLocalBounds().width / 2;
-    auto rounded = round(localBounds);
-    title.setOrigin(rounded, title.getLocalBounds().height);
-    title.setPosition(sf::Vector2f{ window.getSize() / 2u });
-    window.draw(title);
-    window.display();
-
-}
-
-int main() {
-    unsigned int win_width  = 800;
-    unsigned int win_length = 600;
-    int count = 0;
-    sf::RenderWindow window(sf::VideoMode({win_width, win_length}), "SFML works!");
+    Button start(600, 520, "assets/Solid_black.png");
+    sf::Text Start("START", space_font, 40);
+    Start.move(550, 500);
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -28,10 +15,37 @@ int main() {
             window.close();
           }
         }
-        if (count < 1) {
+        start.update(window);
         window.clear(sf::Color::Black);
-        TitleScreen(window);
-        count += 1;
-        }    
+
+        sf::Text title("LAST BREATH", space_font, 50);
+        auto center = title.getGlobalBounds().width / 2.f;
+        auto localBounds = center + title.getLocalBounds().width / 2;
+        auto rounded = round(localBounds);
+        title.setOrigin(rounded, title.getLocalBounds().height);
+        title.setPosition(sf::Vector2f{ window.getSize() / 2u });
+        start.render(window);
+        window.draw(Start);
+        window.draw(title);
+        window.display();
+    if (start.isPressed()) {
+        std::cout << "Click";
+        window.clear(sf::Color::Black);
+        InfoMenu(window);
     }
+    }
+
+    
+    
+
+}
+
+int main() {
+    unsigned int win_width  = 800;
+    unsigned int win_length = 600;
+    sf::Font space_font;
+    space_font.loadFromFile("assets/space-font-italic.ttf");
+    sf::RenderWindow window(sf::VideoMode({win_width, win_length}), "SFML works!");
+    TitleScreen(window);
+    
 }
