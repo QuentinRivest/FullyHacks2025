@@ -1,1 +1,5 @@
-// defines a room object that has 4 walls
+// header file for including Room stuff
+
+#include "Walls.hpp"
+
+void displayExampleRoom();

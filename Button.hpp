@@ -13,7 +13,8 @@ enum class ButtonState { IDLE, HOVERED, PRESSED };
 
 class Button {
 public:
-  Button(sf::Vector2f mousePosView);
+  Button(float x, float y, const std::string &tex_filepath);
+  Button(sf::Vector2f position, const std::string &tex_filepath);
 
   bool isPressed() const;
   bool isHovered() const;
@@ -22,14 +23,14 @@ public:
   void render(sf::RenderTarget& target);
 
 private:
-  sf::Sprite _shape;
-  //sf::Color _idle_color;    // Idk if we'll need colors or if all our buttons will be textures
-  //sf::Color _hover_color;
-  //sf::Color _press_color;
-  sf::Texture _idle_tex;
-  sf::Texture _hovered_tex;
-  sf::Texture _pressed_tex;
-  ButtonState buttonState;
+  sf::Sprite _sprite;
+  sf::Texture _texture;
+  ButtonState _button_state;
+
+// private helper var.s
+  const sf::Color _idle_overlay_color  = sf::Color(255, 255, 255);
+  const sf::Color _hover_overlay_color = sf::Color(205, 205, 205);
+  const sf::Color _press_overlay_color = sf::Color(155, 155, 155);
 };
 
 #endif

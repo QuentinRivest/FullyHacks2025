@@ -1,9 +1,13 @@
 #include <iostream>
-
 #include <SFML/Graphics.hpp>
 
+#include "Room.hpp"
+
 int main() {
-  unsigned int win_width  = 800;
+
+  displayExampleRoom();
+
+  /*unsigned int win_width  = 800;
   unsigned int win_length = 600;
   sf::RenderWindow window(sf::VideoMode({win_width, win_length}), "SFML works!");
 
@@ -36,7 +40,7 @@ int main() {
     window.draw(title_text);
 
     window.display();
-  }
+  }*/
 
   return EXIT_SUCCESS;
 }
